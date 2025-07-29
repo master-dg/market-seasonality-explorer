@@ -1,70 +1,126 @@
-# Getting Started with Create React App
+# 📊 Market Seasonality Explorer
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+An interactive financial calendar app to visualize **volatility**, **liquidity**, and **performance metrics** across multiple timeframes (Day, Week, Month, Custom Period) using real-time Binance market data.
 
-## Available Scripts
+---
 
-In the project directory, you can run:
+## 🚀 Features
 
-### `npm start`
+### 📆 Calendar Modes
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+* **Day View**: Daily OHLC data with:
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+  * Volatility heatmap (Green = Low, Yellow = Medium, Red = High)
+  * Volume bars
+  * Performance arrows (▲/▼/•)
+* **Week View**: Weekly summaries in a 7x8 matrix grid
+* **Month View**: Monthly performance in a 4x3 layout
+* **Period View**: Custom date-range analysis with advanced charting
 
-### `npm test`
+### 📊 Data Visualizations
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+* **Candlestick Chart** with optional SMA overlay
+* **Volume bar chart** with synchronized zoom/pan
+* **Interactive Tooltips** showing price, volatility, volume
 
-### `npm run build`
+### 📂 Side Panel
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+* Pops open on date/month/week click
+* Displays OHLC summary and charts for the selected range
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+### 🧭 Controls
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+* Toggle between:
 
-### `npm run eject`
+  * Day / Week / Month / Period views
+  * Single selection or custom period
+* Symbol selector (live from Binance API)
+* Dark mode support
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
+---
 
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+## 💠 Tech Stack
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
+| Tool/Library                | Description                                   |
+| --------------------------- | --------------------------------------------- |
+| **React**                   | Frontend framework                            |
+| **Material-UI (MUI)**       | UI components & styling                       |
+| **Chart.js**                | Candlestick and bar charts (with zoom plugin) |
+| **chartjs-chart-financial** | Financial chart extensions for Chart.js       |
+| **dayjs**                   | Date handling and formatting                  |
+| **Binance API**             | Live OHLCV & exchange metadata                |
 
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
+---
 
-## Learn More
+## 📦 Installation
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+```bash
+git clone https://github.com/master-dg/market-seasonality-explorer.git
+cd market-seasonality-explorer
+npm install
+npm start
+```
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+---
 
-### Code Splitting
+## 📁 Project Structure
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
+```
+src/
+├── components/
+│   ├── CalendarView.jsx        # View router for all modes
+│   ├── SelectionPanel.jsx      # Header for view/mode/symbol selection
+│   ├── SidePanel.jsx           # Slide-in panel showing OHLC summary
+│   ├── CandlestickChart.jsx    # Combined OHLC + volume chart
+│   ├── PeriodView.jsx          # Custom period picker + detailed charting
+│   └── CalendarViews/
+│       ├── DayView.jsx         # Daily calendar with heatmap and metrics
+│       ├── WeekView.jsx        # Week-wise matrix with hover/click features
+│       └── MonthView.jsx       # Month-wise performance grid
+│
+├── index.js                   # Entry point
+├── App.js                     # App layout
+├── App.css                    # App-wide styling
+├── index.css                  # Base styling
+```
 
-### Analyzing the Bundle Size
+---
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
+## 🔌 External APIs
 
-### Making a Progressive Web App
+* **Binance Exchange Info**: For symbol dropdown
+* **Binance Klines**: For OHLCV data fetching per interval
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
+---
 
-### Advanced Configuration
+## 🧪 Testing
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
+Test cases can be added inside `App.test.js` using `react-testing-library` and `jest`.
 
-### Deployment
+---
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
+## 🌔 Theming
 
-### `npm run build` fails to minify
+* Auto-adaptive to dark/light mode using MUI themes.
+* Theme toggle with animated icons in the header (if integrated).
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+---
+
+## 📊 Sample Metrics Visualized
+
+* **Volatility**: (High - Low) per candle
+* **Volume**: Summed volume per timeframe
+* **Performance**: (Close - Open) % return
+* **SMA**: 20-period simple moving average
+
+---
+
+## 🚣 Future Enhancements (Suggested)
+
+* RSI and VIX-like overlays
+* Custom color themes
+* Export to CSV/PDF
+* Notification alerts
+* Side-by-side symbol comparison
+* Mobile UI optimization
+
